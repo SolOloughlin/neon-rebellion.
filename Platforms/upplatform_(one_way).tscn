@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp3lnxvc2xkmi"]
+
+[ext_resource type="Texture2D" uid="uid://d2lxi0srbgjhc" path="res://Tileset/tilesets.png" id="1_yrrj1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvob5"]
+size = Vector2(80, 12)
+
+[sub_resource type="Animation" id="Animation_geuor"]
+resource_name = "Move"
+length = 7.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.5, 7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-57, 50), Vector2(-57, -70), Vector2(-57, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_038gp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-57, 50)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5dtjj"]
+_data = {
+"Move": SubResource("Animation_geuor"),
+"RESET": SubResource("Animation_038gp")
+}
+
+[node name="Platform (one way)" type="AnimatableBody2D"]
+position = Vector2(-57, 50)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(57, -50)
+texture = ExtResource("1_yrrj1")
+region_enabled = true
+region_rect = Rect2(31.9316, 16.0531, 80.0702, 12.1536)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(57, -50)
+shape = SubResource("RectangleShape2D_cvob5")
+one_way_collision = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5dtjj")
+}
+autoplay = "Move"
