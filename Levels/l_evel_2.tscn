@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=4 uid="uid://5g5yqvgfbq5n"]
+[gd_scene load_steps=13 format=4 uid="uid://5g5yqvgfbq5n"]
 
 [ext_resource type="PackedScene" uid="uid://bbc7vm8348s2h" path="res://background/parallax_background.tscn" id="1_w0lej"]
 [ext_resource type="Texture2D" uid="uid://d2lxi0srbgjhc" path="res://Tileset/tilesets.png" id="2_hn088"]
 [ext_resource type="Texture2D" uid="uid://bnbf6fhnjkpkb" path="res://Tileset/walls.png" id="3_m8uij"]
 [ext_resource type="Texture2D" uid="uid://c1tokjykjkg0v" path="res://Tileset/props.png" id="4_i2ylm"]
-[ext_resource type="PackedScene" uid="uid://dp3lnxvc2xkmi" path="res://Platforms/upplatform_(one_way).tscn" id="5_artl7"]
 [ext_resource type="PackedScene" uid="uid://bygulbsi2b4qq" path="res://player/player.tscn" id="6_qv4v8"]
+[ext_resource type="PackedScene" uid="uid://cmhnoyqhqnyeb" path="res://Bullet/bullet.tscn" id="6_rhipc"]
+[ext_resource type="PackedScene" uid="uid://cpw3l7rlddl1u" path="res://Enemies/enemy_crab.tscn" id="8_g0nn8"]
+[ext_resource type="PackedScene" uid="uid://diwgo8jnvofq3" path="res://Platforms/platform_one_way.tscn" id="8_x8v7k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_31haj"]
 texture = ExtResource("2_hn088")
@@ -300,8 +302,35 @@ tile_set = SubResource("TileSet_3ioxf")
 
 [node name="Player" parent="." instance=ExtResource("6_qv4v8")]
 position = Vector2(66, -38)
+GRAVITY = 500
+SPEED = 500
+JUMP = -200
+JUMP_HORIZONTAL = 50
+jump_horizontal_speed = 200
+max_horizontal_speed = 200
+slow_down_speed = 4000
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-3, -18)
+limit_left = 0
+limit_top = -271
+limit_bottom = 0
 
-[node name="Platform (one way)" parent="." instance=ExtResource("5_artl7")]
+[node name="Bullet" parent="." instance=ExtResource("6_rhipc")]
+visible = false
+position = Vector2(124, -74)
+
+[node name="Enemy crab" parent="." node_paths=PackedStringArray("patrol_points") instance=ExtResource("8_g0nn8")]
+position = Vector2(373, -41)
+patrol_points = NodePath("Node2D")
+WAIT_TIME = 2
+
+[node name="Node2D" type="Node2D" parent="Enemy crab"]
+
+[node name="Marker2D" type="Marker2D" parent="Enemy crab/Node2D"]
+position = Vector2(-89, -4)
+
+[node name="Marker2D2" type="Marker2D" parent="Enemy crab/Node2D"]
+position = Vector2(85, -4)
+
+[node name="Platform One way" parent="." instance=ExtResource("8_x8v7k")]
+position = Vector2(236, -44)
