@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="neon rebbelion"
-run/main_scene="res://Levels/Base Scene.tscn"
+run/main_scene="res://Levels/l_evel_2.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
 [display]

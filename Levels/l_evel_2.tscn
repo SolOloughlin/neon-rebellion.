@@ -312,7 +312,7 @@ slow_down_speed = 4000
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = 0
-limit_top = -271
+limit_top = -358
 limit_bottom = 0
 
 [node name="Bullet" parent="." instance=ExtResource("6_rhipc")]
