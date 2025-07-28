@@ -10,7 +10,7 @@ extends CharacterBody2D
 @export var jump_horizontal_speed: int = 1000
 @export var max_horizontal_speed: int = 300
 @export var slow_down_speed: int = 1700
-enum State { Idle, Run, Jump, RunShoot,}
+enum State { Idle, Run, Jump, RunShoot, StandShoot, }
 
 var current_state : State
 var bullet = preload("res://Bullet/bullet.tscn")
@@ -48,6 +48,18 @@ func player_shooting(delta : float):
 		get_parent().add_child(bullet_instance)
 		current_state = State.RunShoot
 
+	if direction == 0 and Input.is_action_just_pressed("shoot"):
+		var bullet_instance = bullet.instantiate() as Node2D
+		if animation.flip_h == false:
+			bullet_instance.direction = direction + 1 
+		else:
+			bullet_instance.direction = direction - 1
+		print("idle direction:", bullet_instance.direction)
+		bullet_instance.direction = direction
+		bullet_instance.global_position = muzzle.global_position
+		get_parent().add_child(bullet_instance)
+		current_state = State.StandShoot
+
 func _muzzle_position():
 	var direction = _input_movement()
 	
@@ -63,7 +75,6 @@ func player_falling(delta : float):
 func _player_idle(delta : float):
 	if is_on_floor():
 		current_state = State.Idle
-		print(current_state)
 
 
 
@@ -84,7 +95,6 @@ func _player_run(delta : float):
 	
 	if direction != 0 and velocity.y == 0:
 		current_state = State.Run
-		print(current_state)
 		animation.flip_h = false if direction > 0 else true
 
 func _player_jump(delta : float):
@@ -94,7 +104,6 @@ func _player_jump(delta : float):
 	if Input.is_action_just_pressed("move_up") and jump_count < max_jump:
 		velocity.y = JUMP
 		current_state = State.Jump
-		print(current_state)
 		jump_count += 1
 
 
