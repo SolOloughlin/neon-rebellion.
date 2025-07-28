@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lk7k78pgdaav"
-path="res://.godot/imported/crab-walk.png-bcfb0a8edc0aa9203d0c352a16bce6d6.ctex"
+uid="uid://bnbf6fhnjkpkb"
+path="res://.godot/imported/walls.png-43b7fa249076c9398b530100690994b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/crab-walk.png"
-dest_files=["res://.godot/imported/crab-walk.png-bcfb0a8edc0aa9203d0c352a16bce6d6.ctex"]
+source_file="res://Tilesets/Tileset1-purple/walls.png"
+dest_files=["res://.godot/imported/walls.png-43b7fa249076c9398b530100690994b9.ctex"]
 
 [params]
 

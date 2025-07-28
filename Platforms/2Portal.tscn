@@ -1,0 +1,150 @@
+[gd_scene load_steps=21 format=3 uid="uid://d0vue3q6tlccs"]
+
+[ext_resource type="Texture2D" uid="uid://civpscda6d6qq" path="res://Platforms/Ultra Purple Portal Sprite Sheet.png" id="1_hhgd5"]
+[ext_resource type="Script" path="res://Platforms/portal.gd" id="2_ntios"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u77ge"]
+atlas = ExtResource("1_hhgd5")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7acbk"]
+atlas = ExtResource("1_hhgd5")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73yd2"]
+atlas = ExtResource("1_hhgd5")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6387j"]
+atlas = ExtResource("1_hhgd5")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pq61c"]
+atlas = ExtResource("1_hhgd5")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f66s7"]
+atlas = ExtResource("1_hhgd5")
+region = Rect2(320, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_of4ws"]
+atlas = ExtResource("1_hhgd5")
+region = Rect2(384, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mfgm"]
+atlas = ExtResource("1_hhgd5")
+region = Rect2(448, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp1h7"]
+atlas = ExtResource("1_hhgd5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8yxb"]
+atlas = ExtResource("1_hhgd5")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82upr"]
+atlas = ExtResource("1_hhgd5")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahcos"]
+atlas = ExtResource("1_hhgd5")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o08of"]
+atlas = ExtResource("1_hhgd5")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pilb6"]
+atlas = ExtResource("1_hhgd5")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ntyh"]
+atlas = ExtResource("1_hhgd5")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0j3uc"]
+atlas = ExtResource("1_hhgd5")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_05tj0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u77ge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7acbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73yd2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6387j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pq61c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f66s7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_of4ws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mfgm")
+}],
+"loop": false,
+"name": &"disappear",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp1h7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8yxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82upr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahcos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o08of")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pilb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ntyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0j3uc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nvfjg"]
+radius = 6.0
+height = 40.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(1.85608, 1.38548)
+sprite_frames = SubResource("SpriteFrames_05tj0")
+animation = &"idle"
+autoplay = "idle"
+script = ExtResource("2_ntios")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_nvfjg")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

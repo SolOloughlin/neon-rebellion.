@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1tokjykjkg0v"
-path="res://.godot/imported/props.png-a1b5ba9d18aa855e5eaa0b46fec4fccb.ctex"
+uid="uid://dhccf5nb6aeo6"
+path="res://.godot/imported/2CrabIdle.png-5a85a95b25bb585cdddb2916cd660cce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tileset/props.png"
-dest_files=["res://.godot/imported/props.png-a1b5ba9d18aa855e5eaa0b46fec4fccb.ctex"]
+source_file="res://Enemies/2Crab/2CrabIdle.png"
+dest_files=["res://.godot/imported/2CrabIdle.png-5a85a95b25bb585cdddb2916cd660cce.ctex"]
 
 [params]
 
