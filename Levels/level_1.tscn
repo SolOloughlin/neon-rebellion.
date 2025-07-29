@@ -329,32 +329,38 @@ limit_bottom = 0
 
 [node name="Enemy crab" parent="." node_paths=PackedStringArray("patrol_points") instance=ExtResource("8_g0nn8")]
 position = Vector2(454, -251)
+health = 4
 patrol_points = NodePath("Node2D")
+GRAVITY = 1000
+SPEED = 1500
 WAIT_TIME = 2
 
 [node name="Node2D" type="Node2D" parent="Enemy crab"]
 
 [node name="Marker2D" type="Marker2D" parent="Enemy crab/Node2D"]
-position = Vector2(-63, -2)
+position = Vector2(-48.3333, -6.66667)
 
 [node name="Marker2D2" type="Marker2D" parent="Enemy crab/Node2D"]
-position = Vector2(83, -3)
+position = Vector2(61.6667, -7.49999)
 
 [node name="Platform One way" parent="." instance=ExtResource("8_x8v7k")]
 position = Vector2(281, -136)
 
 [node name="Enemy crab2" parent="." node_paths=PackedStringArray("patrol_points") instance=ExtResource("8_g0nn8")]
 position = Vector2(598, -38)
+health = 4
 patrol_points = NodePath("Node2D")
-WAIT_TIME = 2
+GRAVITY = 1000
+SPEED = 2000
+WAIT_TIME = 1
 
 [node name="Node2D" type="Node2D" parent="Enemy crab2"]
 
 [node name="Marker2D" type="Marker2D" parent="Enemy crab2/Node2D"]
-position = Vector2(-145, -7)
+position = Vector2(-115.833, -8.33333)
 
 [node name="Marker2D2" type="Marker2D" parent="Enemy crab2/Node2D"]
-position = Vector2(97, -9)
+position = Vector2(85.8333, -7.5)
 
 [node name="Moving platform" parent="." instance=ExtResource("8_x8v7k")]
 position = Vector2(831, -67)

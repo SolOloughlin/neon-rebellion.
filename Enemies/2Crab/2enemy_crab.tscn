@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://vqci18m2h6uc"]
+[gd_scene load_steps=15 format=3 uid="uid://vqci18m2h6uc"]
 
 [ext_resource type="Script" path="res://Enemies/1Crab/enemy_crab.gd" id="1_gm6cd"]
 [ext_resource type="Texture2D" uid="uid://dhccf5nb6aeo6" path="res://Enemies/2Crab/2CrabIdle.png" id="2_qt7w1"]
@@ -75,7 +75,10 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kidgo"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_d0535"]
+
 [node name="Enemy crab" type="CharacterBody2D"]
+scale = Vector2(1.3, 1.3)
 script = ExtResource("1_gm6cd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -93,4 +96,15 @@ debug_color = Color(0.89645, 0.116244, 0.719193, 0.42)
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -14)
+scale = Vector2(1.58986, 1.61844)
+shape = SubResource("CircleShape2D_d0535")
+debug_color = Color(0.287184, 0.580269, 0.677526, 0.42)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

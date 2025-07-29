@@ -41,24 +41,19 @@ func _physics_process(delta : float):
 func player_shooting(delta : float):
 	var direction = _input_movement()
 	
-	if direction != 0 and Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot"):
 		var bullet_instance = bullet.instantiate() as Node2D
-		bullet_instance.direction = direction
+		if direction != 0:
+			bullet_instance.direction = direction
+			current_state = State.RunShoot
+		if direction == 0:
+			current_state = State.StandShoot
+			if animation.flip_h == false:
+				bullet_instance.direction = direction + 1 
+			else:
+				bullet_instance.direction = direction - 1
 		bullet_instance.global_position = muzzle.global_position
 		get_parent().add_child(bullet_instance)
-		current_state = State.RunShoot
-
-	if direction == 0 and Input.is_action_just_pressed("shoot"):
-		var bullet_instance = bullet.instantiate() as Node2D
-		if animation.flip_h == false:
-			bullet_instance.direction = direction + 1 
-		else:
-			bullet_instance.direction = direction - 1
-		print("idle direction:", bullet_instance.direction)
-		bullet_instance.direction = direction
-		bullet_instance.global_position = muzzle.global_position
-		get_parent().add_child(bullet_instance)
-		current_state = State.StandShoot
 
 func _muzzle_position():
 	var direction = _input_movement()

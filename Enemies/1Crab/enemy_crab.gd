@@ -3,9 +3,11 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
+@onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
+@onready var area_2d: Area2D = $Area2D
 
 
-
+@export var health : int = 4
 @export var patrol_points : Node
 @export var GRAVITY = 1000
 @export var SPEED = 1500
@@ -21,6 +23,7 @@ var can_walk : bool
 
 
 func _ready():
+	_connect_signals()
 	if patrol_points != null:
 		number_of_points = patrol_points.get_children().size()
 		for point in patrol_points.get_children():
@@ -31,14 +34,28 @@ func _ready():
 	timer.wait_time = WAIT_TIME
 	current_state = State.Idle
 
+func _connect_signals():
+	area_2d.connect("body_entered", _decrease_hp)
+	texture_progress_bar.connect("value_change", _healthbar_changed)
+
+func _decrease_hp(body: Node2D) -> void:
+	if body is Bullet:
+		texture_progress_bar.value -= 1
+		body.queue_free()
+		print(texture_progress_bar.value)
+
+func _healthbar_changed(value : float) -> void:
+	if value == 0:
+		print("Health = 0")
+
 func _physics_process(delta: float):
 	_enemy_gravity(delta)
 	_enemy_idle(delta)
 	_enemy_walk(delta)
 	
 	move_and_slide()
-	
 	_enemy_animations()
+
 func _enemy_gravity(delta: float):
 	velocity.y += GRAVITY * delta
 
@@ -80,3 +97,8 @@ func _enemy_animations():
 		animated_sprite_2d.play("Idle")
 	elif current_state == State.Walk && can_walk:
 		animated_sprite_2d.play("Walk")
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	print("Bullet hit crab")
+	health = health - 1
