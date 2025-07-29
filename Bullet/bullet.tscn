@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmhnoyqhqnyeb"]
+[gd_scene load_steps=9 format=3 uid="uid://cmhnoyqhqnyeb"]
 
 [ext_resource type="Texture2D" uid="uid://b85xn3rpdyldd" path="res://Bullet/Bullet.png" id="1_n60cd"]
 [ext_resource type="Script" path="res://Bullet/bullet.gd" id="2_ihiih"]
@@ -39,6 +39,8 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onnd5"]
+
 [node name="Bullet" type="AnimatedSprite2D"]
 scale = Vector2(0.016034, 0.0161486)
 sprite_frames = SubResource("SpriteFrames_vp0fb")
@@ -53,5 +55,13 @@ speed = 400
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(-30.9387, -9.94331)
+shape = SubResource("CapsuleShape2D_onnd5")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

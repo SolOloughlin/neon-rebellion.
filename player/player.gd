@@ -125,6 +125,9 @@ func _player_animations(delta : float):
 	elif current_state == State.RunShoot:
 		animation.play("Run-Shoot")
 
+	elif current_state == State.StandShoot:
+		animation.play("Stand-Shoot")
+
 
 
 func _input_movement():

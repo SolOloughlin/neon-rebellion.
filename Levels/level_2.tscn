@@ -320,6 +320,9 @@ tile_set = SubResource("TileSet_m7sho")
 
 [node name="Player" parent="." instance=ExtResource("2_0rubc")]
 position = Vector2(205, -182)
+GRAVITY = 500
+SPEED = 200
+JUMP = -200
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -18)
