@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://dfq26inolj2ad"]
+
+[ext_resource type="Script" path="res://Enemies/Jumper/Jumper.gd" id="1_t0liw"]
+[ext_resource type="Texture2D" uid="uid://couxdcdg0u6ap" path="res://Enemies/Jumper/JumperIdle.png" id="1_xev4v"]
+[ext_resource type="Texture2D" uid="uid://xg1dyllb32fs" path="res://Enemies/Jumper/jumper-jump.png" id="2_3ck0p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shk2n"]
+atlas = ExtResource("1_xev4v")
+region = Rect2(0, 0, 47, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whyta"]
+atlas = ExtResource("1_xev4v")
+region = Rect2(47, 0, 47, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pxjt"]
+atlas = ExtResource("1_xev4v")
+region = Rect2(94, 0, 47, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ey6pb"]
+atlas = ExtResource("1_xev4v")
+region = Rect2(141, 0, 47, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o3kks"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shk2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whyta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pxjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ey6pb")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3ck0p")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ime3u"]
+
+[sub_resource type="Animation" id="Animation_sfin3"]
+resource_name = "Jumpleft"
+
+[sub_resource type="Animation" id="Animation_pk7kj"]
+resource_name = "JumpRight"
+length = 2.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_metmp"]
+_data = {
+"JumpRight": SubResource("Animation_pk7kj"),
+"Jumpleft": SubResource("Animation_sfin3")
+}
+
+[node name="Jumping_Bug" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_t0liw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_o3kks")
+animation = &"Idle"
+autoplay = "Idle"
+frame = 1
+frame_progress = 0.0568903
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(1.46155, 1.48744)
+shape = SubResource("CircleShape2D_ime3u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CollisionShape2D"]
+libraries = {
+"": SubResource("AnimationLibrary_metmp")
+}
