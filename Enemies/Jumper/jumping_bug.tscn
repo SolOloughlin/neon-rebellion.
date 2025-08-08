@@ -50,12 +50,12 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ime3u"]
 
-[sub_resource type="Animation" id="Animation_sfin3"]
-resource_name = "Jumpleft"
-
 [sub_resource type="Animation" id="Animation_pk7kj"]
 resource_name = "JumpRight"
 length = 2.0
+
+[sub_resource type="Animation" id="Animation_sfin3"]
+resource_name = "Jumpleft"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_metmp"]
 _data = {

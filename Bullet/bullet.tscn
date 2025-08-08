@@ -41,7 +41,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onnd5"]
 
-[node name="Bullet" type="AnimatedSprite2D"]
+[node name="Bullet" type="AnimatedSprite2D" groups=["Bullet"]]
 scale = Vector2(0.016034, 0.0161486)
 sprite_frames = SubResource("SpriteFrames_vp0fb")
 animation = &"Shoot"
@@ -58,7 +58,7 @@ autostart = true
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(-30.9387, -9.94331)

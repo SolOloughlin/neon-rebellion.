@@ -322,3 +322,17 @@ debug_color = Color(0.352887, 0.618948, 7.70092e-07, 0.42)
 
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(18, -27)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(0, 3)
+scale = Vector2(1.40875, 1.11684)
+collision_layer = 2
+collision_mask = 4
+
+[node name="HurtboxCollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -19)
+scale = Vector2(0.534778, 0.764747)
+shape = SubResource("CapsuleShape2D_aovqa")
+debug_color = Color(0.332301, 0.550199, 0.785185, 0.42)
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

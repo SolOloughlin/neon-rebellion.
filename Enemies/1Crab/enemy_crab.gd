@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var area_2d: Area2D = $Area2D
 
 
-@export var health : int = 4
+@export var health : int = 5
 @export var patrol_points : Node
 @export var GRAVITY = 1000
 @export var SPEED = 1500
@@ -98,7 +98,9 @@ func _enemy_animations():
 	elif current_state == State.Walk && can_walk:
 		animated_sprite_2d.play("Walk")
 
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	print("Bullet hit crab")
-	health = health - 1
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Bullet"):
+		health = health - 1
+		print("Bullet hit. Health:", health)
+		if health == 0:
+			queue_free()

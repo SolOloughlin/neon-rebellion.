@@ -17,6 +17,7 @@ var bullet = preload("res://Bullet/bullet.tscn")
 var muzzle_position
 var max_jump = 2
 var jump_count = 0
+var health: int = 5
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var muzzle: Marker2D = $Muzzle
 
@@ -129,3 +130,11 @@ func _input_movement():
 	var direction = Input.get_axis("move_left", "move_right")
 	
 	return direction
+
+
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Enemy"):
+		health = health - 1
+		print("Player_hurtbox entered. Health:", health)
+		if health == 0:
+			queue_free()

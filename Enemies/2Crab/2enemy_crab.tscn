@@ -106,5 +106,11 @@ scale = Vector2(1.58986, 1.61844)
 shape = SubResource("CircleShape2D_d0535")
 debug_color = Color(0.287184, 0.580269, 0.677526, 0.42)
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." groups=["Enemy"]]
+offset_right = 40.0
+offset_bottom = 40.0
+max_value = 5.0
+value = 5.0
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
