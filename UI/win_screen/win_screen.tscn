@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5loj5vn6vnwc"]
+
+[ext_resource type="Texture2D" uid="uid://dp2ychtfofbsv" path="res://UI/win_screen/youwin.webp" id="1_1acc5"]
+
+[node name="Node2D" type="CanvasLayer"]
+
+[node name="Youwin" type="Sprite2D" parent="."]
+position = Vector2(240, 135)
+texture = ExtResource("1_1acc5")

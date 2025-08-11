@@ -20,6 +20,7 @@ var jump_count = 0
 var health: int = 5
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var muzzle: Marker2D = $Muzzle
+@onready var progress_bar: ProgressBar = $ProgressBar
 
 
 func _ready():
@@ -134,7 +135,7 @@ func _input_movement():
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy"):
-		health = health - 1
-		print("Player_hurtbox entered. Health:", health)
+		print("Player_hurtbox entered. Damage taken:", body.damage_amount)
+		HealthManager.decrease_health(body.damage_amount)
 		if health == 0:
 			queue_free()

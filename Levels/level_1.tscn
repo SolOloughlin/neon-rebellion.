@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://5g5yqvgfbq5n"]
+[gd_scene load_steps=15 format=4 uid="uid://5g5yqvgfbq5n"]
 
 [ext_resource type="PackedScene" uid="uid://bbc7vm8348s2h" path="res://background/parallax_background.tscn" id="1_w0lej"]
 [ext_resource type="Texture2D" uid="uid://d2lxi0srbgjhc" path="res://Tilesets/Tileset1-purple/tilesets.png" id="2_hn088"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cpw3l7rlddl1u" path="res://Enemies/1Crab/enemy_crab.tscn" id="8_g0nn8"]
 [ext_resource type="PackedScene" uid="uid://diwgo8jnvofq3" path="res://Platforms/platform_one_way.tscn" id="8_x8v7k"]
 [ext_resource type="PackedScene" uid="uid://b3tfcxw1o2sps" path="res://Levels/level_2.tscn" id="9_uj2kt"]
+[ext_resource type="PackedScene" uid="uid://8jjuppxr4w53" path="res://UI/game_screen.tscn" id="10_hi45d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_31haj"]
 texture = ExtResource("2_hn088")
@@ -363,3 +364,5 @@ position = Vector2(831, -67)
 [node name="Portal" parent="." instance=ExtResource("8_8crd2")]
 position = Vector2(841, -242)
 target_level = ExtResource("9_uj2kt")
+
+[node name="GameScreen" parent="." instance=ExtResource("10_hi45d")]

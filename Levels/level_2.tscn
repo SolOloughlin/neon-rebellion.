@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://b3tfcxw1o2sps"]
+[gd_scene load_steps=16 format=4 uid="uid://b3tfcxw1o2sps"]
 
 [ext_resource type="Texture2D" uid="uid://frjr7yxdfmqe" path="res://Tilesets/Tileset2- Blue/tilesets.png" id="1_xcer5"]
 [ext_resource type="PackedScene" uid="uid://bygulbsi2b4qq" path="res://player/player.tscn" id="2_0rubc"]
@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://b0cc7dtm36qgh" path="res://Platforms/platform_one_way2.tscn" id="2_llv8x"]
 [ext_resource type="Texture2D" uid="uid://6murh0ojgygs" path="res://Tilesets/Tileset2- Blue/props.png" id="4_h448c"]
 [ext_resource type="Texture2D" uid="uid://cybuwyu81qqs6" path="res://Tilesets/Tileset2- Blue/walls.png" id="5_7lnrn"]
-[ext_resource type="PackedScene" uid="uid://d0vue3q6tlccs" path="res://Platforms/2Portal.tscn" id="7_airoe"]
+[ext_resource type="PackedScene" uid="uid://d0vue3q6tlccs" path="res://Platforms/Portal2.tscn" id="7_airoe"]
 [ext_resource type="PackedScene" uid="uid://vqci18m2h6uc" path="res://Enemies/2Crab/2enemy_crab.tscn" id="7_ehfx3"]
-[ext_resource type="Script" path="res://Platforms/2_portal.gd" id="9_xkwt7"]
+[ext_resource type="Script" path="res://Platforms/Portal2.gd" id="9_xkwt7"]
+[ext_resource type="PackedScene" uid="uid://b5loj5vn6vnwc" path="res://UI/win_screen/win_screen.tscn" id="10_7cygd"]
+[ext_resource type="PackedScene" uid="uid://8jjuppxr4w53" path="res://UI/game_screen.tscn" id="10_t72ua"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q2t8k"]
 texture = ExtResource("1_xcer5")
@@ -369,3 +371,10 @@ position = Vector2(270.769, -9.23077)
 
 [node name="Marker2D2" type="Marker2D" parent="Enemy crab2/Node2D2"]
 position = Vector2(436.154, -10.7692)
+
+[node name="Portal3" parent="." instance=ExtResource("7_airoe")]
+position = Vector2(961, -317)
+script = ExtResource("9_xkwt7")
+target_level = ExtResource("10_7cygd")
+
+[node name="GameScreen" parent="." instance=ExtResource("10_t72ua")]

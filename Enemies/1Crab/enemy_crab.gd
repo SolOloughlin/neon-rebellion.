@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
 @onready var area_2d: Area2D = $Area2D
 
-
+@export var damage_amount : int = 1
 @export var health : int = 5
 @export var patrol_points : Node
 @export var GRAVITY = 1000

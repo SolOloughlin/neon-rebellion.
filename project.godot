@@ -14,6 +14,11 @@ config/name="neon rebbelion"
 run/main_scene="res://Levels/level_1.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
+[autoload]
+
+HealthManager="*res://player/health_manager.gd"
+Portal2="*res://Platforms/Portal2.gd"
+
 [display]
 
 window/size/viewport_width=480
