@@ -1,26 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://8jjuppxr4w53"]
+[gd_scene load_steps=5 format=3 uid="uid://8jjuppxr4w53"]
 
 [ext_resource type="PackedScene" uid="uid://ckk87itpiiyfu" path="res://UI/Healthbar/healthbar.tscn" id="1_yb4gi"]
 [ext_resource type="Texture2D" uid="uid://c1251c1bm4an0" path="res://UI/Healthbar/heart1.png" id="2_jemyr"]
 [ext_resource type="Texture2D" uid="uid://blqmcqu7fsj0" path="res://UI/Healthbar/heart0.png" id="3_qresl"]
-[ext_resource type="Texture2D" uid="uid://c0uga81t4ysjd" path="res://UI/Death_screen/gta 5 death.jpg" id="4_mx3xy"]
 [ext_resource type="AudioStream" uid="uid://owx20v1dpdu0" path="res://UI/Death_screen/gta-v-wasted-death-sound.mp3" id="5_dn2wk"]
-[ext_resource type="Texture2D" uid="uid://dp2ychtfofbsv" path="res://UI/win_screen/youwin.webp" id="6_bkvix"]
-
-[sub_resource type="GDScript" id="GDScript_m0o4m"]
-script/source = "extends Sprite2D
-@onready var gta_5_death: Sprite2D = $\".\"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	gta_5_death.visible = false
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
 
 [node name="GameScreen" type="CanvasLayer"]
 
@@ -29,18 +12,6 @@ position = Vector2(10, 10)
 heart1 = ExtResource("2_jemyr")
 heart0 = ExtResource("3_qresl")
 
-[node name="Gta5Death" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(241, 136)
-scale = Vector2(0.76, 0.76)
-texture = ExtResource("4_mx3xy")
-script = SubResource("GDScript_m0o4m")
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_dn2wk")
 volume_db = 24.0
-
-[node name="Youwin" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(240, 135)
-texture = ExtResource("6_bkvix")

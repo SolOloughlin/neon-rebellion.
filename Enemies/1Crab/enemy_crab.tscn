@@ -78,7 +78,7 @@ animations = [{
 [node name="Enemy crab" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(1.2, 1.2)
 collision_layer = 4
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_utidn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

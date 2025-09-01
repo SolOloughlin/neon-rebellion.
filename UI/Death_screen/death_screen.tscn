@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://6a6mp0vkedtl"]
+
+[ext_resource type="Texture2D" uid="uid://dptl7i386a2l4" path="res://UI/win_screen/youlose.png" id="1_t7s8k"]
+[ext_resource type="Script" path="res://UI/Death_screen/restart_button.gd" id="2_gh1rd"]
+[ext_resource type="Texture2D" uid="uid://bhocmpqhbgoeb" path="res://UI/Death_screen/restart_button.png" id="2_hofxm"]
+
+[node name="Death Screen" type="Node2D"]
+
+[node name="Youlose" type="Sprite2D" parent="."]
+position = Vector2(240, 133)
+scale = Vector2(0.728437, 0.728437)
+texture = ExtResource("1_t7s8k")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 177.0
+offset_top = 190.0
+offset_right = 1209.0
+offset_bottom = 774.0
+scale = Vector2(0.118922, 0.118922)
+icon = ExtResource("2_hofxm")
+script = ExtResource("2_gh1rd")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

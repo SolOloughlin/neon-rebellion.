@@ -8,12 +8,11 @@ extends Node2D
 @onready var heart_3: Sprite2D = $Heart3
 
 @onready var death_screen : Sprite2D = $"../Gta5Death"
-@onready var death_sound : AudioStreamPlayer2D = $"../AudioStreamPlayer2D"
+
 
 func _ready() -> void:
 	HealthManager.on_health_changed.connect(on_player_health_changed)
 	print("connected signals healthbar")
-	death_screen.visible = false
 
 
 
@@ -33,6 +32,3 @@ func on_player_health_changed(player_current_health : int):
 	elif player_current_health < 1:
 		heart_1.texture = heart0
 	
-	if player_current_health == 0:
-		death_screen.visible = true
-		death_sound.play()

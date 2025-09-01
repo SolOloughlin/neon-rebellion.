@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://b3tfcxw1o2sps"]
+[gd_scene load_steps=15 format=4 uid="uid://b3tfcxw1o2sps"]
 
 [ext_resource type="Texture2D" uid="uid://frjr7yxdfmqe" path="res://Tilesets/Tileset2- Blue/tilesets.png" id="1_xcer5"]
 [ext_resource type="PackedScene" uid="uid://bygulbsi2b4qq" path="res://player/player.tscn" id="2_0rubc"]
@@ -7,9 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://6murh0ojgygs" path="res://Tilesets/Tileset2- Blue/props.png" id="4_h448c"]
 [ext_resource type="Texture2D" uid="uid://cybuwyu81qqs6" path="res://Tilesets/Tileset2- Blue/walls.png" id="5_7lnrn"]
 [ext_resource type="PackedScene" uid="uid://d0vue3q6tlccs" path="res://Platforms/Portal2.tscn" id="7_airoe"]
-[ext_resource type="PackedScene" uid="uid://vqci18m2h6uc" path="res://Enemies/2Crab/2enemy_crab.tscn" id="7_ehfx3"]
+[ext_resource type="PackedScene" uid="uid://chirp6jtvlmsb" path="res://Enemies/2Crab/2enemy_crab.tscn" id="7_ehfx3"]
 [ext_resource type="Script" path="res://Platforms/Portal2.gd" id="9_xkwt7"]
-[ext_resource type="PackedScene" uid="uid://b5loj5vn6vnwc" path="res://UI/win_screen/win_screen.tscn" id="10_7cygd"]
 [ext_resource type="PackedScene" uid="uid://8jjuppxr4w53" path="res://UI/game_screen.tscn" id="10_t72ua"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q2t8k"]
@@ -335,14 +334,30 @@ limit_bottom = 0
 [node name="Enemy crab" parent="." node_paths=PackedStringArray("patrol_points") instance=ExtResource("7_ehfx3")]
 position = Vector2(285, -69)
 patrol_points = NodePath("Node2D")
+SPEED = 6000
+WAIT_TIME = 1
 
 [node name="Node2D" type="Node2D" parent="Enemy crab"]
 
 [node name="Marker2D" type="Marker2D" parent="Enemy crab/Node2D"]
-position = Vector2(-86, -8)
+position = Vector2(-63.0769, -7.69231)
 
 [node name="Marker2D2" type="Marker2D" parent="Enemy crab/Node2D"]
-position = Vector2(88, -6)
+position = Vector2(177.692, -19.2308)
+
+[node name="Enemy crab2" parent="." node_paths=PackedStringArray("patrol_points") instance=ExtResource("7_ehfx3")]
+position = Vector2(794, -71)
+patrol_points = NodePath("Node2D2")
+SPEED = 8000
+
+[node name="Node2D2" type="Node2D" parent="Enemy crab2"]
+position = Vector2(-407.692, 0.769234)
+
+[node name="Marker2D" type="Marker2D" parent="Enemy crab2/Node2D2"]
+position = Vector2(439.23, -9.23078)
+
+[node name="Marker2D2" type="Marker2D" parent="Enemy crab2/Node2D2"]
+position = Vector2(289.23, -5.38462)
 
 [node name="Moving platform" parent="." instance=ExtResource("2_llv8x")]
 position = Vector2(445, -91)
@@ -359,22 +374,8 @@ position = Vector2(810, -160)
 [node name="Moving platform5" parent="." instance=ExtResource("2_llv8x")]
 position = Vector2(900, -190)
 
-[node name="Enemy crab2" parent="." node_paths=PackedStringArray("patrol_points") instance=ExtResource("7_ehfx3")]
-position = Vector2(794, -71)
-patrol_points = NodePath("Node2D2")
-
-[node name="Node2D2" type="Node2D" parent="Enemy crab2"]
-position = Vector2(-407.692, 0.769234)
-
-[node name="Marker2D" type="Marker2D" parent="Enemy crab2/Node2D2"]
-position = Vector2(270.769, -9.23077)
-
-[node name="Marker2D2" type="Marker2D" parent="Enemy crab2/Node2D2"]
-position = Vector2(436.154, -10.7692)
-
 [node name="Portal3" parent="." instance=ExtResource("7_airoe")]
 position = Vector2(961, -317)
-script = ExtResource("9_xkwt7")
-target_level = ExtResource("10_7cygd")
+scale = Vector2(1.85608, 1.43768)
 
 [node name="GameScreen" parent="." instance=ExtResource("10_t72ua")]

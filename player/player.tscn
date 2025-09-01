@@ -306,6 +306,8 @@ height = 44.753
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 7
 collision_mask = 7
+floor_max_angle = 1.71566
+floor_snap_length = 32.0
 script = ExtResource("1_5yhh2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
