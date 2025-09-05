@@ -25,9 +25,8 @@ func increase_health(health_amount : int):
 
 func _death_screen():
 	if current_health == 0:
-		get_tree().change_scene_to_packed(target_level)
-		death_sound.play()
-		print("opened death screen")
+		get_tree().change_scene_to_file("res://UI/Death_screen/death_screen.tscn")
+
 
 
 # Called when the node enters the scene tree for the first time.
