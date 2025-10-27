@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://5g5yqvgfbq5n"]
+[gd_scene load_steps=17 format=4 uid="uid://5g5yqvgfbq5n"]
 
 [ext_resource type="PackedScene" uid="uid://bbc7vm8348s2h" path="res://background/parallax_background.tscn" id="1_w0lej"]
 [ext_resource type="Texture2D" uid="uid://d2lxi0srbgjhc" path="res://Tilesets/Tileset1-purple/tilesets.png" id="2_hn088"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://diwgo8jnvofq3" path="res://Platforms/platform_one_way.tscn" id="8_x8v7k"]
 [ext_resource type="PackedScene" uid="uid://b3tfcxw1o2sps" path="res://Levels/level_2.tscn" id="9_uj2kt"]
 [ext_resource type="PackedScene" uid="uid://8jjuppxr4w53" path="res://UI/game_screen.tscn" id="10_hi45d"]
+[ext_resource type="Script" path="res://Levels/testbox.gd" id="12_vakuu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_31haj"]
 texture = ExtResource("2_hn088")
@@ -297,12 +298,15 @@ texture = ExtResource("4_i2ylm")
 10:9/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_3ioxf"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 7
 sources/0 = SubResource("TileSetAtlasSource_31haj")
 sources/2 = SubResource("TileSetAtlasSource_r7rbl")
 sources/4 = SubResource("TileSetAtlasSource_5f4aw")
 
-[node name="lEVEL_2" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f34a3"]
+size = Vector2(187.984, 29.9783)
+
+[node name="lEVEL_1" type="Node2D"]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_w0lej")]
 
@@ -329,7 +333,7 @@ limit_top = -383
 limit_bottom = 0
 
 [node name="Enemy crab" parent="." node_paths=PackedStringArray("patrol_points") instance=ExtResource("8_g0nn8")]
-position = Vector2(454, -251)
+position = Vector2(456, -253)
 patrol_points = NodePath("Node2D")
 WAIT_TIME = 2
 
@@ -366,3 +370,17 @@ position = Vector2(841, -242)
 target_level = ExtResource("9_uj2kt")
 
 [node name="GameScreen" parent="." instance=ExtResource("10_hi45d")]
+
+[node name="BulletTest" type="CharacterBody2D" parent="."]
+position = Vector2(687, -98)
+scale = Vector2(0.188221, 3.24569)
+script = ExtResource("12_vakuu")
+
+[node name="Area2D" type="Area2D" parent="BulletTest"]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletTest/Area2D"]
+position = Vector2(-0.817627, 2.1413)
+shape = SubResource("RectangleShape2D_f34a3")
+
+[connection signal="area_entered" from="BulletTest/Area2D" to="BulletTest" method="_on_area_2d_area_entered"]

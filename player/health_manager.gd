@@ -28,7 +28,7 @@ func _death_screen():
 		get_tree().change_scene_to_file("res://UI/Death_screen/death_screen.tscn")
 
 
-
+ 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_health = max_health

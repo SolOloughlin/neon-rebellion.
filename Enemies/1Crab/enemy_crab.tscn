@@ -77,8 +77,7 @@ animations = [{
 
 [node name="Enemy crab" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(1.2, 1.2)
-collision_layer = 4
-collision_mask = 7
+collision_mask = 6
 script = ExtResource("1_utidn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -96,11 +95,10 @@ debug_color = Color(0.89645, 0.116244, 0.719193, 0.42)
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
+[node name="CollisionBox" type="Area2D" parent="."]
 collision_mask = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBox"]
 position = Vector2(-1, -14)
 scale = Vector2(1.58986, 1.61844)
 shape = SubResource("CircleShape2D_kidgo")
@@ -113,4 +111,4 @@ max_value = 5.0
 value = 5.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="CollisionBox" to="." method="_on_area_2d_body_entered"]

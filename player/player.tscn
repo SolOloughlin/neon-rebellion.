@@ -304,8 +304,7 @@ radius = 12.2136
 height = 44.753
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 7
-collision_mask = 7
+collision_layer = 4
 floor_max_angle = 1.71566
 floor_snap_length = 32.0
 script = ExtResource("1_5yhh2")
@@ -328,8 +327,7 @@ position = Vector2(18, -27)
 [node name="Hurtbox" type="Area2D" parent="."]
 position = Vector2(0, 3)
 scale = Vector2(1.40875, 1.11684)
-collision_layer = 2
-collision_mask = 4
+collision_layer = 4
 
 [node name="HurtboxCollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -19)
